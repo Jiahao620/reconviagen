@@ -24,7 +24,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-  <title>GaussReg: Fast 3D Registration with Gaussian Splatting</title>
+  <title>ReconViaGen: Towards Accurate Multi-view 3D Object Reconstruction via Generation</title>
   <link rel="icon" type="image/x-icon" href="static/images/logo.ico">
   <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
   rel="stylesheet">
@@ -52,19 +52,27 @@
       <div class="container is-max-desktop">
         <div class="columns is-centered">
           <div class="column has-text-centered">
-            <h1 class="title is-1 publication-title">GaussReg: Fast 3D Registration with Gaussian Splatting</h1>
-            <h2 class="title is-3"><b>ECCV 2024</b></h2>
+            <h1 class="title is-1 publication-title">ReconViaGen: Towards Accurate Multi-view 3D Object Reconstruction via Generation</h1>
+<!--             <h2 class="title is-3"><b>Arxiv 2025</b></h2> -->
             <div class="is-size-5 publication-authors">
               <!-- Paper authors -->
               <span class="author-block">
                 <a href="https://github.com/Jiahao620" target="_blank">Jiahao Chang</a><sup>1</sup>,</span>
                 <span class="author-block">
-                  Yinglin Xu</a><sup>2</sup>,</span>
+                  Chongjie Ye</a><sup>2</sup>,</span>
                   <span class="author-block">
-                    Yihao Li</a><sup>2</sup>,</span>
+                    Yushuang Wu</a><sup>2</sup>,</span>
                     <span class="author-block">
                       <a href="https://tao-11-chen.github.io" target="_blank">Yuantao Chen</a><sup>1</sup>,</span>
                       <span class="author-block">
+                        <a href="https://gaplab.cuhk.edu.cn" target="_blank">Yidan Zhang</a></a><sup>1, 2</sup><sup>†</sup></span>
+                        <span class="author-block">
+                        <a href="https://gaplab.cuhk.edu.cn" target="_blank">Chenghong Li</a></a><sup>1, 2</sup><sup>†</sup></span>
+                        <span class="author-block">
+                        <a href="https://gaplab.cuhk.edu.cn" target="_blank">Yihao Zhi</a></a><sup>1, 2</sup><sup>†</sup></span>
+                        <span class="author-block">
+                        <a href="https://gaplab.cuhk.edu.cn" target="_blank">Wensen Feng</a></a><sup>1, 2</sup><sup>†</sup></span>
+                        <span class="author-block">
                         <a href="https://gaplab.cuhk.edu.cn" target="_blank">Xiaoguang Han</a></a><sup>1, 2</sup><sup>†</sup></span>
                   </div>
 
@@ -78,17 +86,17 @@
                   <div class="column has-text-centered">
                     <div class="publication-links">
                       <!-- ArXiv abstract Link -->
-                    <span class="link-block">
+                    <!-- <span class="link-block">
                       <a href="https://arxiv.org/abs/2407.05254" target="_blank"
                       class="external-link button is-normal is-rounded is-dark">
                       <span class="icon">
                         <i class="ai ai-arxiv"></i>
                       </span>
                       <span>arXiv</span>
-                    </a>
+                    </a> -->
                   </span>
                   <!-- Dataset Link. -->
-                  <span class="link-block">
+                  <!-- <span class="link-block">
                     <!-- <a href="https://pan.baidu.com/s/1c2tXSBx717RuKWrlDiCksw?pwd=c15x" -->
                       <a href="https://cuhko365.sharepoint.com/:f:/s/ITSO_GAPLAB-GaussReg/Eomcyk5utZROuVABknvNPNkBEYmZzlv09Ob3ucNXLkBAKA?e=BZYAU4"
                       class="external-link button is-normal is-rounded is-dark">
@@ -96,17 +104,17 @@
                           <i class="far fa-images"></i>
                       </span>
                       <span>Data</span>
-                      </a>
+                      </a> -->
                 </span>
                   <!-- Github link -->
-                  <span class="link-block">
+                  <!-- <span class="link-block">
                     <a href="https://github.com/GAP-LAB-CUHK-SZ/GaussReg" target="_blank"
                     class="external-link button is-normal is-rounded is-dark">
                     <span class="icon">
                       <i class="fab fa-github"></i>
                     </span>
                     <span>Code</span>
-                  </a>
+                  </a> -->
                 </span>
             </div>
           </div>
@@ -122,9 +130,11 @@
   <div class="container is-max-desktop">
     <div class="hero-body">
         <!-- Your image here -->
-        <img src="static/images/teaser.jpg" alt="MY ALT TEXT"/>
+        <img src="static/images/teaser.png" alt="MY ALT TEXT"/>
       <h2 class="subtitle has-text-centered">
-        The purpose of our method is to register scenes A and B with Gaussian Splatting models, and then combine A with B to get the fused Gaussian Splatting model.
+        In the task of 3D object reconstruction from multi-view images, existing pure reconstruction methods can only produce incomplete results, 
+        while generation-based methods can get plausible complete results but with strong inconsistency with input images. 
+        Our ReconViaGen novelly integrates 3D reconstruction and diffusion-based generation priors into one framework that leads to accurate reconstructions.
       </h2>
     </div>
   </div>
@@ -139,7 +149,7 @@
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
           <p>
-            Point cloud registration is a fundamental problem for large-scale 3D scene scanning and reconstruction. With the help of deep learning, registration methods have evolved significantly, reaching a nearly-mature stage. As the introduction of Neural Radiance Fields (NeRF), it has become the most popular 3D scene representation as its powerful view synthesis capabilities. Regarding NeRF representation, its registration is also required for large-scale scene reconstruction. However, this topic extremly lacks exploration. This is due to the inherent challenge to model the geometric relationship among two scenes with implicit representations. The existing methods usually convert the implicit representation to explicit representation for further registration. Most recently, Gaussian Splatting (GS) is introduced, employing explicit 3D Gaussian. This method significantly enhances rendering speed while maintaining high rendering quality. Given two scenes with explicit GS representations, in this work, we explore the 3D registration task between them. To this end, we propose GaussReg, a novel coarse-to-fine framework, both fast and accurate. The coarse stage follows existing point cloud registration methods and estimates a rough alignment for point clouds from GS. We further newly present an image-guided fine registration approach, which renders images from GS to provide more detailed geometric information for precise alignment. To support comprehensive evaluation, we carefully build a scene-level dataset called ScanNet-GSReg with 1379 scenes obtained from the ScanNet dataset and collect an in-the-wild dataset called GSReg. Experimental results demonstrate our method achieves state-of-the-art performance on multiple datasets. Our GaussReg is 44× faster than HLoc (SuperPoint as the feature extractor and SuperGlue as the matcher) with comparable accuracy.
+            Existing multi-view 3D object reconstruction methods heavily rely on sufficient overlap between input images and are prone to generating holes or artifacts, thereby limiting the geometric precision and completeness of the reconstructed models. Recent advancements in diffusion-based 3D generative techniques offer the potential to address these limitations by leveraging learned generative priors to ‘‘hallucinate" the invisible parts of objects, thereby generating plausible 3D structures. However, the stochastic nature of the inference process limits the accuracy and reliability of generation results, preventing existing reconstruction frameworks integrating such 3D generative priors. In this work, we comprehensively analyze the reasons why diffusion-based 3D generative methods fail to achieve high consistency, including (a) the insufficiency in constructing cross-view connections when extracting multi-view image features as conditions, (b) the susceptibility of the global coarse structure generation to initial noise, and (c) the poor controllability of iterative denoising during local detail generation, which easily leads to plausible but inconsistent global structures and local details with inputs. Accordingly, we propose ReconViaGen to innovatively integrate reconstruction priors into the generative framework and devise several strategies that effectively address these issues. Extensive experiments demonstrate that our ReconViaGen can reconstruct complete and accurate 3D models consistent with input views in both global structure and local details.
           </p>
         </div>
       </div>
@@ -155,9 +165,10 @@
       <br>
       <h2 class="title is-3">Method Overview</h2>
         <!-- Your image here -->
-        <img src="static/images/method.jpg" alt="MY ALT TEXT"/>
+        <img src="static/images/method_overview.png" alt="MY ALT TEXT"/>
       <h2 class="subtitle has-text-centered">
-        The pipeline of GaussReg.
+        An overview illustration of the proposed ReconViaGen framework, 
+        which integrates strong reconstruction priors with 3D diffusion-based generation priors for accurate reconstruction at both the global and local level.
       </h2>
     </div>
   </div>
@@ -168,35 +179,17 @@
 <section class="hero is-small">
   <div class="hero-body">
     <div class="container">
-      <h2 class="title is-3">Registration Results</h2>
+      <h2 class="title is-3">Comparison to Other Open Source Methods</h2>
       <div id="results-carousel" class="carousel results-carousel">
        <div class="item">
         <center>
         <!-- Your image here -->
-        <img src="static/images/ScanNet_vis.jpg" alt="MY ALT TEXT" width="860" height="1240"/>
+        <img src="static/images/comparsion.png" alt="MY ALT TEXT" width="860" height="1240"/>
         <h2 class="subtitle has-text-centered">
-          Visualization of our final registration results on ScanNet-GSReg dataset.
+          Qualitative comparison on the Dora-bench and OminiObject3D dataset with some open source methods.
         </h2>
        </center>
       </div>
-      <div class="item">
-        <center>
-        <!-- Your image here -->
-        <img src="static/images/Outdoor_vis.jpg" alt="MY ALT TEXT" width="860" height="827"/>
-        <h2 class="subtitle has-text-centered">
-          Visualization of our final registration results on GSReg dataset (Outdoor).
-        </h2>
-       </center>
-      </div>
-      <div class="item">
-        <center>
-        <!-- Your image here -->
-        <img src="static/images/Indoor_vis.jpg" alt="MY ALT TEXT" width="860" height="1240"/>
-        <h2 class="subtitle has-text-centered">
-          Visualization of our final registration results on GSReg dataset (Indoor).
-       </h2>
-      </center>
-     </div>
   </div>
 </div>
 </div>
@@ -207,7 +200,73 @@
 <section class="hero is-small">
   <div class="hero-body">
     <div class="container">
-      <h2 class="title is-3">Fusion Results</h2>
+      <h2 class="title is-3">Comparison to Commercial Methods</h2>
+      <div id="results-carousel" class="carousel results-carousel">
+        <div class="item item-video1">
+          <center>
+          <video poster="" id="video1" autoplay controls muted loop height="100%">
+            <!-- Your video file here -->
+            <source src="static/images/compare_w_hunyuan.gif"
+            type="video/mp4">
+          </video>
+          <center>
+        </div>
+        <div class="item item-video2">
+          <center>
+          <video poster="" id="video2" autoplay controls muted loop height="100%">
+            <!-- Your video file here -->
+            <source src="static/images/compare_w_hunyuan_2.gif"
+            type="video/mp4">
+          </video>
+          <center>
+        </div>
+        <div class="item item-video3">
+          <center>
+          <video poster="" id="video3" autoplay controls muted loop height="100%">
+            <!-- Your video file here -->
+            <source src="static/images/compare_w_hunyuan_3.gif"
+            type="video/mp4">
+          </video>
+          <center>
+        </div>
+        <div class="item item-video3">
+          <center>
+          <video poster="" id="video3" autoplay controls muted loop height="100%">
+            <!-- Your video file here -->
+            <source src="static/videos/data_4.mp4"
+            type="video/mp4">
+          </video>
+          <center>
+        </div>
+        <div class="item item-video3">
+          <center>
+          <video poster="" id="video3" autoplay controls muted loop height="100%">
+            <!-- Your video file here -->
+            <source src="static/videos/data_5.mp4"
+            type="video/mp4">
+          </video>
+          <center>
+        </div>
+        <div class="item item-video3">
+          <center>
+          <video poster="" id="video3" autoplay controls muted loop height="100%">\
+            <!-- Your video file here -->
+            <source src="static/videos/data_6.mp4"
+            type="video/mp4">
+          </video>
+          <center>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End video carousel -->
+
+<!-- Video carousel -->
+<section class="hero is-small">
+  <div class="hero-body">
+    <div class="container">
+      <h2 class="title is-3">Comparison to Commercial Methods</h2>
       <div id="results-carousel" class="carousel results-carousel">
         <div class="item item-video1">
           <center>
